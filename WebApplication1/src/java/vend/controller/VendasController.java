@@ -30,33 +30,6 @@ public class VendasController {
         return "vend/index";
     }
     
-
-    @RequestMapping("cart")
-    public String cart(Model model, HttpSession session) {
-        Cart carrinho = new Cart();
-        ProdDao dao = new ProdDao();
-        ArrayList<Produto> produtos = new ArrayList();
-        if(session.getAttribute("carrinho") != null){
-            int itens = 0;
-            carrinho.setCarrinho(((Cart) session.getAttribute("carrinho")).getCarrinho());
-            itens = carrinho.getCarrinho().size();
-            for (ProdCart p : carrinho.getCarrinho()){
-                try {
-                    Produto prod = (Produto) dao.consultaPorID(p.getProduto());
-                    prod.setQuantidade(p.getQuantidade());
-                    produtos.add(prod);
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        } 
-        System.out.println("produtos");
-        model.addAttribute("carrinho", produtos);
-        return "vend/cart";
-    }
-    
-    
-    
     @RequestMapping("limparCarrinho")
     public String limparCarrinho(HttpSession session){
         session.removeAttribute("carrinho");
@@ -65,14 +38,18 @@ public class VendasController {
     
     @RequestMapping("addCart")
     public void addCarrinho(ProdCart prod, HttpServletResponse response, HttpSession session){
+        System.out.println("Add Cart");
         Cart carrinho = new Cart();
         if(session.getAttribute("carrinho") != null){
             carrinho.setCarrinho(((Cart) session.getAttribute("carrinho")).getCarrinho());
         } 
         prod.setQuantidade(prod.getQuantidade() + carrinho.quantCarrinho(prod.getProduto()));
+        if (prod.getQuantidade() < 0){
+            prod.setQuantidade(0);
+        }
         carrinho.addCarrinho(prod);
         session.setAttribute("carrinho", carrinho);
-        System.out.println(" " + carrinho);
+        System.out.println(carrinho);
         response.setStatus(200);
     }
 }

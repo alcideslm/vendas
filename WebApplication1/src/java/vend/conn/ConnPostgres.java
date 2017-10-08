@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 public class ConnPostgres extends ConnGeneric{
     private static final String DBURL = "jdbc:postgresql://localhost:5432/pi";
     private static final String USER = "postgres";
-    private static final String PASS = "182950";
+    private static final String PASS = "senhadb";
     
     
     public ConnPostgres(){
@@ -31,7 +31,7 @@ public class ConnPostgres extends ConnGeneric{
         if (conn == null){
             try {
                 conn = (Connection) DriverManager.getConnection(DBURL,USER,PASS);
-                System.out.println("Conectou ao DB!");
+                System.out.println("Conectou com Servidor Postgres!");
             } catch (Exception e) { 
                 System.out.println(e.getMessage());
             }

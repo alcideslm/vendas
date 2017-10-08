@@ -32,7 +32,7 @@ public class ConnMySql extends ConnGeneric{
         if (conn == null){
             try {
                 conn = (Connection) DriverManager.getConnection(DBURL,USER,PASS);
-                System.out.println("Conectou ao DB!");
+                System.out.println("Conectou com Servidor Postgres!!");
             } catch (Exception e) { 
                 e.printStackTrace();
             }
