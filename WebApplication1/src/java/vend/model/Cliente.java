@@ -7,16 +7,27 @@ import java.io.Serializable;
  * @author Alcides Lemos
  */
 public class Cliente implements Serializable{
+    private int cod;
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
     private String  nome,
-                    login;
+                    email;
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    
     
 
     public String getNome() {
