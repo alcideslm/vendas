@@ -61,7 +61,7 @@ public class ProdDao extends GenericDao{
         try {
              produtos = super.recuperarListaDeObjetos("select * from produto");
         } catch (SQLException ex) {
-            Logger.getLogger(ProdDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return produtos;
     }
