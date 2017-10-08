@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tarefas.dao;
+package vend.dao;
 
-import tarefas.model.Usuario;
+import vend.model.Cliente;
 
 /**
  *
  * @author Alcides Lemos
  */
-public class UsuarioDao {
-
-    public boolean existeUsuario(Usuario usuario) {
+public class ClienteDao {
+    public boolean existeCliente(Cliente cliente) {
         return true;
     }
-    
 }

@@ -50,6 +50,7 @@ public class VendasController {
                 }
             }
         } 
+        System.out.println("produtos");
         model.addAttribute("carrinho", produtos);
         return "vend/cart";
     }

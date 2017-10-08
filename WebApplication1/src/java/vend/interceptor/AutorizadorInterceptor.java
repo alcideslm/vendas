@@ -22,7 +22,8 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
       String uri = request.getRequestURI();
       if(   uri.endsWith("loginForm") ||
             uri.endsWith("efetuaLogin") ||
-            uri.endsWith("home") ||  
+            uri.endsWith("cart") || 
+            uri.endsWith("addCart") ||  
             uri.endsWith("/") ||  
             uri.contains("resources")
             ){

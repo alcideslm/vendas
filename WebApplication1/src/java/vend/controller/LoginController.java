@@ -8,8 +8,8 @@ package vend.controller;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import tarefas.dao.UsuarioDao;
-import tarefas.model.Usuario;
+import vend.dao.ClienteDao;
+import vend.model.Cliente;
 
 /**
  *
@@ -23,10 +23,10 @@ public class LoginController{
     }
     
     @RequestMapping("efetuaLogin")
-    public String efetuaLogin(Usuario usuario, HttpSession session) {
-        if(new UsuarioDao().existeUsuario(usuario)) {
-            session.setAttribute("usuarioLogado", usuario);
-            return "menu";
+    public String efetuaLogin(Cliente cliente, HttpSession session) {
+        if(new ClienteDao().existeCliente(cliente)) {
+            session.setAttribute("usuarioLogado", cliente);
+            return "redirect:/";
         }
         return "redirect:loginForm";
     }
@@ -34,7 +34,12 @@ public class LoginController{
     @RequestMapping("logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:loginForm";
+        return "redirect:/";
     }
+
+  @RequestMapping("fLogin")
+  public String formLogin() {
+      return "loginForm";
+  }
 }
 
