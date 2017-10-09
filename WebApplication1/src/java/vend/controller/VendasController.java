@@ -30,12 +30,6 @@ public class VendasController {
         return "vend/index";
     }
     
-    @RequestMapping("limparCarrinho")
-    public String limparCarrinho(HttpSession session){
-        session.removeAttribute("carrinho");
-        return "vend/index";
-    }
-    
     @RequestMapping("addCart")
     public void addCarrinho(ProdCart prod, HttpServletResponse response, HttpSession session){
         System.out.println("Add Cart");

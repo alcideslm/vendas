@@ -26,7 +26,7 @@ public class LoginController{
     public String efetuaLogin(Cliente cliente, HttpSession session) {
         if(new ClienteDao().existeCliente(cliente)) {
             session.setAttribute("usuarioLogado", cliente);
-            return "redirect:/";
+            return "redirect:cart";
         }
         return "redirect:loginForm";
     }

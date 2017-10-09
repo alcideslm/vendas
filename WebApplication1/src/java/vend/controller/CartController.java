@@ -45,4 +45,10 @@ public class CartController {
         model.addAttribute("carrinho", produtos);
         return "vend/cart";
     }
+    
+    @RequestMapping("limparCarrinho")
+    public String limparCarrinho(HttpSession session){
+        session.removeAttribute("carrinho");
+        return "redirect:cart";
+    }
 }

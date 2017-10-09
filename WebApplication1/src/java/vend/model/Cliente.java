@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 public class Cliente implements Serializable{
     private int cod;
+    private String  nome,
+                    email;
 
     public int getCod() {
         return cod;
@@ -16,8 +18,6 @@ public class Cliente implements Serializable{
     public void setCod(int cod) {
         this.cod = cod;
     }
-    private String  nome,
-                    email;
 
     public String getEmail() {
         return email;
@@ -26,9 +26,6 @@ public class Cliente implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
-
-    
-    
 
     public String getNome() {
         return nome;
