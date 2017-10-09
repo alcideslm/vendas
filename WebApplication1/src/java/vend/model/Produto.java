@@ -50,4 +50,13 @@ public class Produto {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Cod:" + cod + " - " + nome + "\tValor Unit.: R$ " + valor + 
+                "\nQuantidade: " + quantidade + "\tValor Total: R$ " + 
+                (valor * quantidade) + "\nDescricao:" + descricao;
+    }
+    
+    
 }

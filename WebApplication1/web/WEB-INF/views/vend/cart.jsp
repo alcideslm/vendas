@@ -97,12 +97,12 @@
                                         <td>
                                             <a href='#' onClick="removeCart(${produto.cod})"><i id="rem_${produto.cod}" style="font-size: 20px" class="icon ion-ios-minus-outline" ></i></a>
                                             &VeryThinSpace;&VeryThinSpace;&VeryThinSpace;&VeryThinSpace;
-                                            <span id="qtd_${produto.cod}">${produto.quantidade}</span>
+                                            <span id="qtd_${produto.cod}">${produto.quantidade}</span><span id="valIni_${produto.cod}" hidden="true">${produto.valor}</span>
                                             &VeryThinSpace;&VeryThinSpace;&VeryThinSpace;&VeryThinSpace;
                                             <a href='#'><i id="add_${produto.cod}" style="font-size: 20px" class="icon ion-ios-plus-outline" onClick="addCart(${produto.cod})"></i></a>
                                         </td>
                                         <td><a href="#">Remover</a></td>
-                                        <td>R$ ${produto.valor * produto.quantidade}</td>
+                                        <td id="val_${produto.cod}">R$ ${produto.valor * produto.quantidade}</td>
                                     </tr>                
                                 </c:forEach>
                             </tbody>
@@ -132,6 +132,9 @@
                 $('#qtd_' + id).text(
                     (+($('#qtd_' + id).text()) + 1)
                 );
+                $('#val_' + id).text(
+                    "R$ " + (+($('#qtd_' + id).text()) * +($('#valIni_' + id).text()))
+                );
             }
         );
     }
@@ -142,6 +145,9 @@
                 if (+($('#qtd_' + id).text()) != 0){
                     $('#qtd_' + id).text(
                         (+($('#qtd_' + id).text()) - 1)
+                    );
+                    $('#val_' + id).text(
+                        "R$ " + (+($('#qtd_' + id).text()) * +($('#valIni_' + id).text()))
                     );
                 } else {
                     alert("Quantidade minima atingida!");
