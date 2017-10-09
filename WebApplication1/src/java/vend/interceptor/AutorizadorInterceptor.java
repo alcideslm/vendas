@@ -25,6 +25,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
             uri.endsWith("cart") || 
             uri.endsWith("addCart") ||  
             uri.endsWith("/") ||  
+            uri.endsWith("") ||  
             uri.contains("resources")
             ){
         return true;

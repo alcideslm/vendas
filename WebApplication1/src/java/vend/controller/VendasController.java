@@ -46,4 +46,12 @@ public class VendasController {
         System.out.println(carrinho);
         response.setStatus(200);
     }
+    
+    
+    @RequestMapping("vend")
+    public String limparCarrinho(HttpSession session){
+        session.removeAttribute("carrinho");
+        
+        return "redirect:index";
+    }   
 }

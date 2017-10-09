@@ -16,8 +16,8 @@ import java.sql.SQLException;
  */
 public abstract class ConnGeneric {
 
-    public static final String nameDAO = "ConnPostgres";
-    //public static final String nameDAO = "ConnMySql";
+    //public static final String nameDAO = "ConnPostgres";
+    public static final String nameDAO = "ConnMySql";
 
     protected static Connection conn;
     
