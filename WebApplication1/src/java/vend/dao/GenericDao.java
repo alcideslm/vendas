@@ -9,8 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import vend.conn.ConnGeneric;
 
 /**
@@ -33,7 +31,16 @@ public abstract class GenericDao {
     protected abstract Object construirObjeto(ResultSet rs);
     public abstract void adicionar(Object obj, String tabela);
     public abstract void altera(Object obj);
-    public abstract ArrayList<Object> recuperarTodos();
+    
+    public ArrayList<Object> recuperarTodos() {
+        ArrayList<Object> objeto = null;
+        try {
+             objeto = recuperarListaDeObjetos("select * from " + tabela);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return objeto;
+    }
     public void adicionar(Object obj){
         adicionar(obj,tabela);
     };
@@ -56,8 +63,8 @@ public abstract class GenericDao {
             ps.close();
         }
         return obj;
-    }    
-    
+    }  
+       
     void deletar (int id){
         try {
             deletar(id,tabela);

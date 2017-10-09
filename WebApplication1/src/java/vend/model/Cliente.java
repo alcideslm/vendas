@@ -9,7 +9,16 @@ import java.io.Serializable;
 public class Cliente implements Serializable{
     private int cod;
     private String  nome,
-                    email;
+                    email,
+                    senha;
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public int getCod() {
         return cod;

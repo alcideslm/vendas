@@ -55,14 +55,5 @@ public class ProdDao extends GenericDao{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public ArrayList<Object> recuperarTodos() {
-        ArrayList<Object> produtos = null;
-        try {
-             produtos = super.recuperarListaDeObjetos("select * from produto");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return produtos;
-    }
+    
 }
