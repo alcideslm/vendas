@@ -13,29 +13,33 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  *
  * @author Alcides Lemos
  */
-public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
+public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
+
     @Override
-    public boolean preHandle(HttpServletRequest request, 
-      HttpServletResponse response,
-      Object controller) throws Exception {
+    public boolean preHandle(HttpServletRequest request,
+            HttpServletResponse response,
+            Object controller) throws Exception {
 
-      String uri = request.getRequestURI();
-      if(   uri.endsWith("loginForm") ||
-            uri.endsWith("efetuaLogin") ||
-            uri.endsWith("cart") || 
-            uri.endsWith("addCart") ||  
-            uri.endsWith("/") ||  
-            uri.endsWith("") ||  
-            uri.contains("resources")
-            ){
-        return true;
-      }
+        String uri = request.getRequestURI();
+        if (uri.endsWith("loginForm")
+                || uri.endsWith("efetuaLogin")
+                || uri.endsWith("cart")
+                || uri.endsWith("addCart")
+                || uri.endsWith("/")
+                || uri.contains("resources")) {
+            return true;
+        }
 
-      if(request.getSession().getAttribute("usuarioLogado") != null) {
-        return true;
-      }
+        if (request.getSession().getAttribute("usuarioLogado") != null) {
+            return true;
+        }
 
-      response.sendRedirect("loginForm");
-      return false;
-  }    
+        if (uri.endsWith("Vend")) {
+            response.sendRedirect("/Vend/");
+            return false;
+        }
+
+        response.sendRedirect("loginForm");
+        return false;
+    }
 }
