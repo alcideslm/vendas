@@ -28,3 +28,23 @@ values 	('Produto 1','Descrição do produto 1',10.99),
 		('Produto 4','Descrição do produto 4',15.99),
 		('Produto 5','Descrição do produto 5',15.99);
 
+select * from produto;
+
+create table pedido(
+	cod int not null auto_increment,
+    cliente int not null,
+    estado int,
+    data_pedido timestamp default current_timestamp,
+    primary key (cod),
+    foreign key (cliente) references cliente(cod)
+);
+
+create table itempedido(
+	pedido int not null,
+    produto int not null,
+    quantidade int not null,
+    valorUnit numeric (7,2),
+    primary key (pedido,produto),
+    foreign key (pedido) references pedido(cod),
+    foreign key (produto) references produto(cod)
+);
